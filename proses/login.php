@@ -15,7 +15,7 @@ if (!$result) {
 }
 
 if (mysqli_num_rows($result) == 0) {
-    echo "Password dan username salah!";
+    echo "Password dan username salah! Hahaha";
     exit;
 }
 ?>
