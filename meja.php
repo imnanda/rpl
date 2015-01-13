@@ -1,3 +1,17 @@
+<?php
+include'config/session.php';
+include'config/db_connect.php';
+
+if(! is_login() || ! cek_jabatan("Pelayan"))
+{
+    header("Location:login.php");
+    exit();
+}
+
+$sql = "SELECT * FROM meja";
+
+$result = mysqli_query($conn, $sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,15 +80,17 @@
             <h1>Meja</h1>
         </div>
         <div class="row">
-            <?php for($i=0; $i <=20; $i++)  { ?>
+            <?php while($row = mysqli_fetch_assoc($result))  { ?>
+            <a href='menu.php?nomor_meja=<?php echo $row["nomor_meja"]; ?>'>
             <div class="col-xs-3">
                 <div class="meja">
                     <div class="meja-desc">
-                        <div class="meja-title">Meja <?php echo $i+1; ?></div>
-                        <div class="meja-kursi">10 Kursi</div>
+                        <div class="meja-title">Nomor Meja <?php echo $row["nomor_meja"]; ?></div>
+                        <div class="meja-kursi">Jumlah Kursi <?php echo $row["jumlah_kursi"]; ?></div>
                     </div>
                 </div>
             </div>
+            </a>
             <?php } ?>
         </div>
     </div>
