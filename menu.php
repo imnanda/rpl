@@ -1,8 +1,8 @@
 <?php
-include'config/session.php';
-include'config/db_connect.php';
+include 'config/session.php';
+include 'config/db_connect.php';
 
-if(! is_login() || ! cek_jabatan("Pelayan"))
+if ( ! is_login() || ! cek_jabatan("Pelayan"))
 {
     header("Location:login.php");
     exit();
@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $sql);
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/bootswatch.min.css" rel="stylesheet">
 
-    <link href="assets/css/meja.css" rel="stylesheet">
+    <link href="assets/css/menu.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -75,20 +75,23 @@ $result = mysqli_query($conn, $sql);
 
     <div class="container theme-showcase" role="main">
         <div class="page-header">
-            <h1>Meja</h1>
+            <h1>Menu</h1>
         </div>
         <div class="row">
-            <?php while($row = mysqli_fetch_assoc($result))  { ?>
-            <a href='menu.php?nomor_meja=<?php echo $row["id_menu"]; ?>'>
-            <div class="col-xs-3">
-                <div class="meja">
-                    <div class="meja-desc">
-                        <div class="meja-title">Nomor Meja <?php echo $row["nomor_meja"]; ?></div>
-                        <div class="meja-kursi">Jumlah Kursi <?php echo $row["jumlah_kursi"]; ?></div>
+            <?php while ($row = mysqli_fetch_assoc($result))
+            { ?>
+
+                <div class="col-xs-3">
+                    <div class="menu">
+                        <img src="http://lorempixel.com/400/200/food/<?php echo $i++; ?>">
+
+                        <div class="menu-desc">
+                            <div class="menu-title"><?php echo $row["nama_menu"]; ?></div>
+                            <div class="menu-price">Rp. <?php echo $row["harga"]; ?></div>
+                        </div>
+                        <input type="number">
                     </div>
                 </div>
-            </div>
-            </a>
             <?php } ?>
         </div>
     </div>

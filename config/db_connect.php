@@ -1,9 +1,9 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "02624701363";
 $dbname = "db_restoran";
-$conn = mysqli_connect($servername, $username, $password,$dbname);
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 if (! $conn) {
-    die("Connection failed: ");
+    die("Connection failed: ". mysqli_error($conn));
 }
