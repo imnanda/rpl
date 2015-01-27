@@ -45,4 +45,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
-config/db_connect.php
+includes/db_connect.php

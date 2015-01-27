@@ -1,15 +1,38 @@
-.menu {
-  text-align: center;
-  border: 1px solid #cccccc;
-  margin-bottom: 25px;
+.menu-container {
+  border-bottom: 1px #ddd solid;
 }
-.menu img {
-  width: 100%;
+@media (min-width: 992px) {
+  .menu-container.bottom {
+    border-bottom: none;
+  }
 }
-.menu .menu-desc {
+@media (min-width: 992px) {
+  .menu-container:nth-child(odd) {
+    border-right: 1px solid #ddd;
+  }
+}
+.menu-container:hover {
+  background: #f1f1f1;
+}
+.menu-container .menu {
+  padding: 15px 0;
+}
+.menu-container .menu img {
+  height: 100px;
+}
+.menu-container .menu .menu-desc {
   margin: 10px;
+  width: 10000px;
 }
-.menu .menu-desc .menu-title {
+.menu-container .menu .menu-desc .menu-title {
+  margin-top: 25px;
   font-size: 20px;
   font-weight: bold;
+}
+.menu-container .menu .menu-order {
+  padding-top: 25px;
+}
+.menu-container .menu .menu-order input {
+  width: 60px;
+  padding: 10px;
 }

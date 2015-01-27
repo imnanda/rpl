@@ -1,6 +1,5 @@
 <?php
-include 'config/session.php';
-include 'config/db_connect.php';
+include 'includes/includes.php';
 
 if ( ! is_login() || ! cek_jabatan("Pelayan"))
 {
@@ -9,6 +8,8 @@ if ( ! is_login() || ! cek_jabatan("Pelayan"))
 }
 $sql = "SELECT * FROM menu";
 $result = mysqli_query($conn, $sql);
+$menu = getData($result);
+$jumlah_menu = count($menu);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,21 +79,35 @@ $result = mysqli_query($conn, $sql);
             <h1>Menu</h1>
         </div>
         <div class="row">
-            <?php while ($row = mysqli_fetch_assoc($result))
+            <?php
+            $i = 1;
+            if ($jumlah_menu % 2)
+                $end_border = $jumlah_menu - 1;
+            else
+                $end_border = $jumlah_menu - 2;
+
+            foreach ($menu as $row)
             { ?>
 
-                <div class="col-xs-3">
-                    <div class="menu">
-                        <img src="http://lorempixel.com/400/200/food/<?php echo $i++; ?>">
+                <?php ?>
+                <div class="col-md-6 menu-container <?php if ($i > $end_border) echo 'bottom'; ?>">
+                    <div class="media menu">
+                        <div class="media-left">
+                            <img src="http://lorempixel.com/400/200/food/<?php echo $i; ?>">
+                        </div>
 
-                        <div class="menu-desc">
-                            <div class="menu-title"><?php echo $row["nama_menu"]; ?></div>
+                        <div class="media-body menu-desc">
+                            <h4 class="media-heading menu-title"><?php echo $row["nama_menu"]; ?></h4>
+
                             <div class="menu-price">Rp. <?php echo $row["harga"]; ?></div>
                         </div>
-                        <input type="number">
+                        <div class="media-right menu-order">
+                            <input type="number" value="0" class="qty">
+                        </div>
                     </div>
                 </div>
-            <?php } ?>
+                <?php $i++;
+            } ?>
         </div>
     </div>
     <!-- /container -->
