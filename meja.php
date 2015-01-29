@@ -1,6 +1,5 @@
 <?php
-include'config/session.php';
-include'config/db_connect.php';
+include 'includes/includes.php';
 
 if(! is_login() || ! cek_jabatan("Pelayan"))
 {

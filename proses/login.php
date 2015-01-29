@@ -1,6 +1,6 @@
 <?php
-include'../config/db_connect.php';
-include'../config/session.php';
+include '../includes/db_connect.php';
+include '../includes/session.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -36,7 +36,7 @@ switch(strtolower($user['jabatan']))
     case 'kasir' : $location = "../kasir.php";
     break;
 
-    case 'koki' : $location = "koki.php";
+    case 'koki' : $location = "../tambahmenu.php";
     break;
 
     case 'pantry' : $location = "pantry.php";
