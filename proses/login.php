@@ -35,7 +35,7 @@ switch(strtolower($user['jabatan']))
 
     case 'kasir' : $location = "../kasir.php";
     break;
-    
+
     case 'koki' : $location = "../tambahmenu.php";
     break;
 
