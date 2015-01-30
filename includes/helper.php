@@ -10,3 +10,9 @@ function getData($data)
 
     return $arrData;
 }
+
+function redirect($url = '../index.php')
+{
+    header('Location:'.$url);
+    die();
+}

@@ -1,3 +1,13 @@
+<?php
+include 'includes/includes.php';
+if (!is_login() || !cek_jabatan("Koki")) {
+    header("Location:login.php");
+    exit();
+}
+$sql = "SELECT id_menu,nama_menu,harga,jenis,status FROM menu WHERE jenis = 'makanan'; ";
+$result = mysqli_query($conn, $sql);
+$menu = getData($result);
+?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -86,7 +96,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-primary" </button>
+                <button type="submit" class="btn btn-primary">Kirim </button>
             </div>
         </div>
     </form>

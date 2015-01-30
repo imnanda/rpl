@@ -52,8 +52,10 @@ $menu = getData($result);
         <!--/.nav-collapse -->
     </div>
 </nav>
-
 <div class="container theme-showcase" role="main">
+    <a href="tambahmenu.php" <button type="button" class="btn btn-success pull-right">Tambah Menu</button></a>
+    <a href="tambahlistpantry.php" <button type="button" class="btn btn-success pull-right">Tambah List Pantry</button></a>
+    <div class="clearfix"></div>
     <div class="panel panel-default">
         <!-- Default panel contents -->
         <div class="panel-heading">Daftar Menu Resoran</div>
@@ -61,11 +63,10 @@ $menu = getData($result);
         <!-- Table -->
         <table class="table">
             <tr>
-                <b></b>
-                <td>Nama Makanan</td>
-                <td>Harga</td>
-                <td>Status</td>
-                </b>
+                <th>Nama Makanan</th>
+                <th>Harga</th>
+                <th>Status</th>
+                <th></th>
             </tr>
             <?php
             foreach ($menu as $row) {
@@ -74,9 +75,9 @@ $menu = getData($result);
                     <td><?php echo $row['nama_menu']; ?></td>
                     <td><?php echo $row['harga']; ?></td>
                     <td><?php echo $row['status']; ?></td>
-                    <td>
-                        <a href="editmenu.php?id_menu=<?php echo $row['id_menu']; ?>"> <button type="button" class="btn btn-blue">Edit</button></a>
-                        <a href="hapus.php?id_menu=<?php echo $row['id_menu']; ?>"> <button type="button" class="btn btn-red">Hapus</button></a>
+                    <td style="width:140px; text-align: right">
+                        <a href="editmenu.php?id_menu=<?php echo $row['id_menu']; ?>"> <button type="button" class="btn btn-success">Edit</button></a>
+                        <a href="hapusmenu.php?id_menu=<?php echo $row['id_menu']; ?>" onclick="return confirm('Anda Ingin Menghapus')"> <button type="button" class="btn btn-warning">Hapus</button></a>
                     </td>
                 </tr>
             <?php
