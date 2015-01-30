@@ -1,3 +1,6 @@
+.sembunyi {
+  display: none;
+}
 .menu-container {
   border-bottom: 1px #ddd solid;
 }
@@ -30,9 +33,9 @@
   font-weight: bold;
 }
 .menu-container .menu .menu-order {
-  padding-top: 25px;
+  padding-top: 30px;
 }
 .menu-container .menu .menu-order input {
   width: 60px;
-  padding: 10px;
+  padding: 5px;
 }
