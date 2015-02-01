@@ -1,0 +1,97 @@
+.height {
+  height: 20px;
+  display: block;
+}
+.sembunyi {
+  display: none;
+}
+.step-header {
+  border-bottom: 1px #ddd solid;
+  padding-bottom: 0;
+}
+.step-header .step {
+  text-align: center;
+  border-bottom: 3px solid transparent;
+}
+.step-header .step h2 {
+  color: #ddd;
+}
+@media (max-width: 992px) {
+  .step-header .step {
+    display: none;
+  }
+}
+.step-header .step.active {
+  display: block;
+  border-color: #ddd;
+}
+.step-header .step.active h2 {
+  color: #444;
+}
+.step-header .step span {
+  border: 1px solid;
+  border-radius: 36px;
+  width: 37px;
+  display: inline-block;
+  text-align: center;
+  line-height: 35px;
+  font-size: 17px;
+}
+.menu-container {
+  border-bottom: 1px #ddd solid;
+}
+@media (min-width: 992px) {
+  .menu-container.bottom {
+    border-bottom: none;
+  }
+}
+@media (min-width: 992px) {
+  .menu-container:nth-child(odd) {
+    border-right: 1px solid #ddd;
+  }
+}
+.menu-container:hover {
+  background: #f1f1f1;
+}
+.menu-container .menu {
+  padding: 15px 0;
+}
+.menu-container .menu img {
+  height: 100px;
+}
+.menu-container .menu .menu-desc {
+  margin: 10px;
+  width: 10000px;
+}
+.menu-container .menu .menu-desc .menu-title {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.menu-container .menu .menu-order {
+  padding-top: 30px;
+}
+.menu-container .menu .menu-order .qty {
+  width: 60px;
+  padding: 5px;
+}
+.menu-container .menu .menu-order .status {
+  width: 100px;
+  padding: 5px;
+}
+.meja {
+  text-align: center;
+  border: 1px solid #cccccc;
+  height: 100px;
+  margin-bottom: 25px;
+}
+.meja.isi {
+  background: #FFE4E2;
+}
+.meja .meja-desc {
+  margin-top: 25px;
+}
+.meja .meja-desc .meja-title {
+  font-size: 20px;
+  font-weight: bold;
+}

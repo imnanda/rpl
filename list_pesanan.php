@@ -7,8 +7,13 @@ if ( ! is_login() || ! cek_jabatan("Pelayan"))
     exit();
 }
 
-$sql = "SELECT * FROM meja";
-$meja = getData($sql);
+$sql = "SELECT *
+        FROM pesanan
+        JOIN karyawan USING (id_karyawan)
+        ORDER BY id_pesanan DESC";
+
+$pesanan = getData($sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,27 +44,32 @@ $meja = getData($sql);
 
     <div class="container theme-showcase" role="main">
         <?php include "components/alert.php"; ?>
-        <h1>Meja</h1>
-        <hr>
-        <div class="row">
-            <?php foreach ($meja as $row)
-            { ?>
-                <?php if ($row['status'] != "Tersedia") { ?>
-                <a href='status_pesanan.php?nomor_meja=<?php echo $row["nomor_meja"]; ?>'>
-                <?php } else { ?>
-                <a href='menu.php?nomor_meja=<?php echo $row["nomor_meja"]; ?>'>
-                <?php } ?>
-                    <div class="col-xs-3">
-                        <div class="meja <?php if ($row['status'] != "Tersedia") echo 'isi'; ?>">
-                            <div class="meja-desc">
-                                <div class="meja-title">Nomor Meja <?php echo $row["nomor_meja"]; ?></div>
-                                <div class="meja-kursi">Jumlah Kursi <?php echo $row["jumlah_kursi"]; ?></div>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <?php } ?>
-        </div>
+        <h1>List Pesanan</h1>
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>ID Pesanan</th>
+                <th>Nomor Meja</th>
+                <th>Waktu Pemesanan</th>
+                <th>Pelayan</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach($pesanan as $p) { ?>
+            <tr>
+                <th scope="row"><?php echo $p['id_pesanan']; ?></th>
+                <td><?php echo $p['nomor_meja']; ?></td>
+                <td><?php echo date('d-M-y H:i:s', strtotime($p['waktu_pesan'])); ?></td>
+                <td><?php echo $p['nama_karyawan']; ?></td>
+                <td><?php echo $p['status']; ?></td>
+                <td class="text-right"><a class="btn btn-primary btn-sm" href="status_pesanan.php?id_pesanan=<?php echo $p['id_pesanan']; ?>">Lihat Pesanan</a></td>
+            </tr>
+            <?php } ?>
+            </tbody>
+        </table>
     </div>
     <!-- /container -->
 
@@ -71,5 +81,10 @@ $meja = getData($sql);
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+    <script>
+        $(function () {
+
+        });
+    </script>
 </body>
 </html>

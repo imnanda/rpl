@@ -56,7 +56,7 @@ $menu = getData($result);
 </nav>
 
 <div class="container theme-showcase" role="main">
-    <form class="form-horizontal" action="kirim_menu.php" method="post">
+    <form class="form-horizontal" action="proses/simpan_menu.php" method="post">
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">Nama Menu:</label>
 

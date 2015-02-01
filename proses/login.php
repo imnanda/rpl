@@ -1,6 +1,5 @@
 <?php
-include '../includes/db_connect.php';
-include '../includes/session.php';
+include '../includes/includes.php';
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -9,14 +8,10 @@ $sql = "SELECT username, id_karyawan, nama_karyawan, jabatan FROM user JOIN kary
 
 $result = mysqli_query($conn, $sql);
 
-if (!$result) {
-    echo "Tidak dapat mengeksekusi query " . mysqli_error($conn);
-    exit;
-}
-
-if (mysqli_num_rows($result) == 0) {
-    echo "Password dan username salah!";
-    exit;
+if (mysqli_num_rows($result) == 0)
+{
+    alert("Username atau password salah!", 'warning');
+    redirect('../login.php');
 }
 
 $user = mysqli_fetch_assoc($result);
@@ -28,24 +23,31 @@ $_SESSION['nama_karyawan'] = $user["nama_karyawan"];
 $_SESSION['jabatan'] = $user["jabatan"];
 
 
-switch(strtolower($user['jabatan']))
+switch (strtolower($user['jabatan']))
 {
-    case 'pelayan' : $location = "../meja.php";
-    break;
+    case 'pelayan' :
+        $location = "../meja.php";
+        break;
 
-    case 'kasir' : $location = "../kasir.php";
-    break;
+    case 'koki' :
+        $location = "../list_menu.php";
+        break;
 
-    case 'koki' : $location = "../listmenu.php";
-    break;
+    case 'pantry' :
+        $location = "../list_permintaan_pantry.php";
+        break;
 
-    case 'pantry' : $location = "../listpantry.php";
-    break;
+    case 'kasir' :
+        $location = "../list_tagihan.php";
+        break;
 
-    case 'admin' : $location = "admin.php";
-    break;
+    case 'cs' :
+        $location = "../list_kuesioner.php";
+        break;
 
-
+    case 'admin' :
+        $location = "admin.php";
+        break;
 }
 
-header("Location:".$location);
+header("Location:" . $location);

@@ -1,0 +1,118 @@
+.height {
+    height: 20px;
+    display: block;
+}
+
+.sembunyi {
+    display: none;
+}
+
+.step-header {
+    border-bottom: 1px #ddd solid;
+    padding-bottom: 0;
+
+    .step {
+        text-align: center;
+        border-bottom: 3px solid transparent;
+
+        h2 {
+            color: #ddd;
+        }
+
+        @media (max-width: 992px) {
+            display: none;
+        }
+
+        &.active {
+            display: block;
+            border-color: #ddd;
+
+            h2 {
+                color: #444;
+            }
+        }
+
+        span {
+            border: 1px solid;
+            border-radius: 36px;
+            width: 37px;
+            display: inline-block;
+            text-align: center;
+            line-height: 35px;
+            font-size: 17px;
+        }
+    }
+}
+
+.menu-container {
+    border-bottom: 1px #ddd solid;
+
+    @media (min-width: 992px) {
+        &.bottom {
+            border-bottom: none;
+        }
+    }
+
+    &:nth-child(odd) {
+        @media (min-width: 992px) {
+            border-right: 1px solid #ddd;
+        }
+    }
+
+    &:hover {
+        background: #f1f1f1;
+    }
+
+    .menu {
+        padding: 15px 0;
+
+        img {
+            height: 100px;
+        }
+
+        .menu-desc {
+            margin: 10px;
+            width: 10000px;
+
+            .menu-title {
+                margin-top: 25px;
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+
+        .menu-order {
+            padding-top: 30px;
+
+            .qty {
+                width: 60px;
+                padding: 5px;
+            }
+
+            .status {
+                width: 100px;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+.meja {
+    text-align: center;
+    border: 1px solid rgb(204, 204, 204);
+    height: 100px;
+    margin-bottom: 25px;
+
+    &.isi {
+        background: #FFE4E2;
+    }
+
+    .meja-desc {
+        margin-top:25px;
+
+        .meja-title {
+            font-size:20px;
+            font-weight: bold;
+        }
+    }
+}

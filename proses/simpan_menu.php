@@ -1,11 +1,11 @@
 <?php
-include 'includes/includes.php';
+include '../includes/includes.php';
 
 if ( ! is_login() || ! cek_jabatan("Koki"))
 {
-    header("Location:login.php");
-    exit();
+    redirect('../login.php');
 }
+
 $nama_menu = $_POST['nama_menu'];
 $harga = $_POST['harga'];
 $jenis = $_POST['jenis'];
@@ -15,4 +15,13 @@ $id_karyawan = $_SESSION['id_karyawan'];
 $sql = "INSERT INTO menu (nama_menu, harga, jenis, status, id_karyawan) VALUES ('$nama_menu', $harga, '$jenis', '$status', $id_karyawan)";
 $result = mysqli_query($conn, $sql);
 
-echo mysqli_error($conn);
+if ($result)
+{
+    alert('Berhasil menyimpan menu.', 'success');
+    redirect('../list_menu.php');
+}
+else
+{
+    alert('Gagal menyimpan menu.', 'danger');
+    redirect('../list_menu.php');
+}
